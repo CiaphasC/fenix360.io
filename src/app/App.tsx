@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { CurtainOverlay } from '@/components/layout/CurtainOverlay';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { HorizontalScrollSection } from '@/components/layout/HorizontalScrollSection';
 import { ConsultoriaSection } from '@/components/sections/ConsultoriaSection';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ManifiestoSection } from '@/components/sections/ManifiestoSection';
@@ -110,8 +111,17 @@ export function App() {
         <main className="relative z-10">
           <HeroSection />
           <MentoriaCardsSection gsapReady={gsapReady} />
-          <ConsultoriaSection gsapReady={gsapReady} />
-          <ManifiestoSection gsapReady={gsapReady} />
+          <HorizontalScrollSection
+            gsapReady={gsapReady}
+            labels={['Soluciones Ejecutivas', 'Manifiesto 2026']}
+          >
+            <div className="w-full md:w-screen md:flex-shrink-0 md:h-full md:flex md:flex-col md:justify-center md:overflow-y-auto">
+              <ConsultoriaSection gsapReady={gsapReady} />
+            </div>
+            <div className="w-full md:w-screen md:flex-shrink-0 md:h-full md:flex md:flex-col md:justify-center md:overflow-y-auto">
+              <ManifiestoSection gsapReady={gsapReady} />
+            </div>
+          </HorizontalScrollSection>
           <QuoteSection gsapReady={gsapReady} />
         </main>
 
