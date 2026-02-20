@@ -53,14 +53,14 @@ export function QuoteFogGlow() {
     scene.add(fogLayer);
 
     const sprites: FogSprite[] = [];
-    const fogCount = 24;
+    const fogCount = 22;
 
     for (let index = 0; index < fogCount; index += 1) {
       const material = new THREE.SpriteMaterial({
         map: glowTexture,
         color: 0xff6a3d,
         transparent: true,
-        opacity: 0.05 + Math.random() * 0.06,
+        opacity: 0.045 + Math.random() * 0.05,
         depthWrite: false,
         depthTest: false,
         blending: THREE.NormalBlending,
@@ -80,7 +80,7 @@ export function QuoteFogGlow() {
         baseZ,
         baseScale,
         phase: Math.random() * Math.PI * 2,
-        speed: 0.1 + Math.random() * 0.2,
+        speed: 0.038 + Math.random() * 0.055,
         drift: 8 + Math.random() * 14,
         density: 0.8 + Math.random() * 0.7,
       };
@@ -106,9 +106,9 @@ export function QuoteFogGlow() {
         sprite.position.y = baseY + Math.cos(elapsed * speed * 0.75 + phase) * drift * 0.45;
         sprite.position.z = baseZ + Math.sin(elapsed * speed * 0.5 + phase) * 18;
 
-        const pulse = 1 + Math.sin(elapsed * speed * 1.4 + phase) * 0.08;
+        const pulse = 1 + Math.sin(elapsed * speed * 0.55 + phase) * 0.05;
         sprite.scale.setScalar(baseScale * pulse);
-        material.opacity = 0.035 + density * 0.045 + Math.sin(elapsed * speed + phase) * 0.015;
+        material.opacity = 0.032 + density * 0.04 + Math.sin(elapsed * speed * 0.6 + phase) * 0.01;
       }
 
       renderer.render(scene, camera);
