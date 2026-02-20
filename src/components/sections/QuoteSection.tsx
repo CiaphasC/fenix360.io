@@ -1,6 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import { GsapParallax } from '@/components/ui/GsapParallax';
 import { GsapReveal } from '@/components/ui/GsapReveal';
+import { QuoteFogGlow } from '@/components/three/QuoteFogGlow';
 
 interface QuoteSectionProps {
   gsapReady: boolean;
@@ -8,8 +9,10 @@ interface QuoteSectionProps {
 
 export function QuoteSection({ gsapReady }: QuoteSectionProps) {
   return (
-    <section className="py-40 px-6 bg-white text-center relative z-10 overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-40 px-6 bg-white text-center relative z-10 overflow-hidden isolate">
+      <QuoteFogGlow />
+
+      <div className="max-w-4xl mx-auto relative z-10">
         <GsapReveal gsapReady={gsapReady} direction="up">
           <div className="w-[1px] h-32 bg-gray-200 mx-auto mb-12 relative overflow-hidden">
             <GsapParallax gsapReady={gsapReady} speed={2} className="absolute top-0 left-0 w-full h-1/2 bg-[#FF4D30]" />

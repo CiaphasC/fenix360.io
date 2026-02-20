@@ -231,8 +231,8 @@ export function HeroParticles() {
       repulsionY += (repulsionTargetY - repulsionY) * 0.16;
       repulsionStrength += (repulsionStrengthTarget - repulsionStrength) * 0.12;
 
-      camera.position.x += (inputX * 15 - camera.position.x) * 0.05;
-      camera.position.y += (inputY * 15 - camera.position.y) * 0.05;
+      camera.position.x += (inputX * 16 - camera.position.x) * 0.05;
+      camera.position.y += (inputY * 16 - camera.position.y) * 0.05;
       camera.lookAt(scene.position);
 
       const positionsArray = particles.geometry.attributes.position.array as Float32Array;
@@ -242,8 +242,8 @@ export function HeroParticles() {
 
       for (let index = 0; index < particleCount; index += 1) {
         const i3 = index * 3;
-        const baseX = originalPositions[i3] + Math.sin(elapsedTime * 0.5 + originalPositions[i3 + 1] * 0.05) * 5;
-        const baseY = originalPositions[i3 + 1] + Math.cos(elapsedTime * 0.3 + originalPositions[i3] * 0.05) * 2;
+        const baseX = originalPositions[i3] + Math.sin(elapsedTime * 0.55 + originalPositions[i3 + 1] * 0.05) * 5.8;
+        const baseY = originalPositions[i3 + 1] + Math.cos(elapsedTime * 0.35 + originalPositions[i3] * 0.05) * 2.4;
 
         let finalX = baseX;
         let finalY = baseY;
@@ -266,7 +266,7 @@ export function HeroParticles() {
       }
 
       particles.geometry.attributes.position.needsUpdate = true;
-      particles.rotation.y = elapsedTime * 0.03;
+      particles.rotation.y = elapsedTime * 0.04;
 
       renderer.render(scene, camera);
     };
