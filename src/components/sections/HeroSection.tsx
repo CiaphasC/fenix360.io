@@ -1,7 +1,12 @@
 import { ArrowUpRight } from 'lucide-react';
 import { HeroParticles } from '@/components/three/HeroParticles';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 export function HeroSection() {
+  const scrollToManifiesto = () => {
+    scrollToSection('manifiesto');
+  };
+
   return (
     <section className="relative h-screen min-h-[600px] w-full flex items-center overflow-hidden">
       <HeroParticles />
@@ -44,7 +49,10 @@ export function HeroSection() {
               </div>
 
               <div className="hero-btn mt-4 md:mt-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 opacity-0 w-full">
-                <button className="group relative px-6 md:px-8 py-4 bg-gray-900 text-white overflow-hidden transition-all hover:bg-[#FF4D30] w-full sm:w-auto flex justify-start sm:justify-center">
+                <button
+                  type="button"
+                  className="group relative px-6 md:px-8 py-4 bg-gray-900 text-white overflow-hidden transition-all hover:bg-[#FF4D30] w-full sm:w-auto flex justify-start sm:justify-center"
+                >
                   <div className="relative z-10 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]">
                     Ver Caso de Estudio
                     <ArrowUpRight
@@ -54,7 +62,11 @@ export function HeroSection() {
                   </div>
                 </button>
 
-                <button className="group flex items-center justify-start sm:justify-center gap-3 px-6 md:px-8 py-4 text-gray-500 hover:text-gray-900 transition-colors w-fit sm:w-auto">
+                <button
+                  type="button"
+                  onClick={scrollToManifiesto}
+                  className="group flex items-center justify-start sm:justify-center gap-3 px-6 md:px-8 py-4 text-gray-500 hover:text-gray-900 transition-colors w-fit sm:w-auto"
+                >
                   <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#FF4D30] transition-colors shrink-0">
                     <div className="w-0 h-0 border-l-[6px] border-l-gray-900 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5 group-hover:border-l-[#FF4D30]"></div>
                   </div>

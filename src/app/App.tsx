@@ -14,6 +14,7 @@ import { useGsapSetup } from '@/hooks/useGsapSetup';
 import { useHeroIntroAnimation } from '@/hooks/useHeroIntroAnimation';
 import { useScrollLock } from '@/hooks/useScrollLock';
 import { useScrollThreshold } from '@/hooks/useScrollThreshold';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 export function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,11 +82,57 @@ export function App() {
   useEffect(() => {
     const closeMenuOnHashChange = () => {
       setIsMenuOpen(false);
+
+      const sectionId = window.location.hash.replace('#', '').trim();
+      if (!sectionId) {
+        return;
+      }
+
+      window.requestAnimationFrame(() => {
+        scrollToSection(sectionId, { behavior: 'smooth', updateHash: false });
+      });
     };
 
     window.addEventListener('hashchange', closeMenuOnHashChange);
     return () => {
       window.removeEventListener('hashchange', closeMenuOnHashChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleInternalAnchorClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const target = event.target as HTMLElement | null;
+      if (!target) {
+        return;
+      }
+
+      const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
+      if (!link || link.target === '_blank' || link.hasAttribute('download')) {
+        return;
+      }
+
+      const href = link.getAttribute('href');
+      if (!href || href === '#') {
+        return;
+      }
+
+      const sectionId = href.slice(1).trim();
+      if (!sectionId || !document.getElementById(sectionId)) {
+        return;
+      }
+
+      event.preventDefault();
+      setIsMenuOpen(false);
+      scrollToSection(sectionId, { behavior: 'smooth', updateHash: true });
+    };
+
+    document.addEventListener('click', handleInternalAnchorClick);
+    return () => {
+      document.removeEventListener('click', handleInternalAnchorClick);
     };
   }, []);
 
@@ -115,10 +162,16 @@ export function App() {
             gsapReady={gsapReady}
             labels={['Soluciones Ejecutivas', 'Manifiesto 2026']}
           >
-            <div className="w-full md:w-screen md:flex-shrink-0 md:h-full md:flex md:flex-col md:justify-center md:overflow-y-auto">
+            <div
+              data-horizontal-slide="consultoria"
+              className="w-full md:w-screen md:flex-shrink-0 md:h-full md:flex md:flex-col md:justify-center md:overflow-y-auto"
+            >
               <ConsultoriaSection gsapReady={gsapReady} />
             </div>
-            <div className="w-full md:w-screen md:flex-shrink-0 md:h-full md:flex md:flex-col md:justify-center md:overflow-y-auto">
+            <div
+              data-horizontal-slide="manifiesto"
+              className="w-full md:w-screen md:flex-shrink-0 md:h-full md:flex md:flex-col md:justify-center md:overflow-y-auto"
+            >
               <ManifiestoSection gsapReady={gsapReady} />
             </div>
           </HorizontalScrollSection>
