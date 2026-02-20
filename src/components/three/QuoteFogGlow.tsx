@@ -60,7 +60,7 @@ export function QuoteFogGlow() {
         map: glowTexture,
         color: 0xff6a3d,
         transparent: true,
-        opacity: 0.045 + Math.random() * 0.05,
+        opacity: 0.036 + Math.random() * 0.034,
         depthWrite: false,
         depthTest: false,
         blending: THREE.NormalBlending,
@@ -80,7 +80,7 @@ export function QuoteFogGlow() {
         baseZ,
         baseScale,
         phase: Math.random() * Math.PI * 2,
-        speed: 0.038 + Math.random() * 0.055,
+        speed: 0.044 + Math.random() * 0.06,
         drift: 8 + Math.random() * 14,
         density: 0.8 + Math.random() * 0.7,
       };
@@ -108,7 +108,7 @@ export function QuoteFogGlow() {
 
         const pulse = 1 + Math.sin(elapsed * speed * 0.55 + phase) * 0.05;
         sprite.scale.setScalar(baseScale * pulse);
-        material.opacity = 0.032 + density * 0.04 + Math.sin(elapsed * speed * 0.6 + phase) * 0.01;
+        material.opacity = 0.024 + density * 0.03 + Math.sin(elapsed * speed * 0.6 + phase) * 0.007;
       }
 
       renderer.render(scene, camera);
@@ -148,7 +148,7 @@ export function QuoteFogGlow() {
       className="absolute inset-0 z-0 pointer-events-none"
       style={{
         background:
-          'radial-gradient(circle at 50% 58%, rgba(255,117,66,0.2) 0%, rgba(255,117,66,0.1) 24%, rgba(255,117,66,0) 70%)',
+          'radial-gradient(circle at 50% 58%, rgba(255,117,66,0.13) 0%, rgba(255,117,66,0.065) 24%, rgba(255,117,66,0) 70%)',
         maskImage: 'radial-gradient(circle at 50% 52%, black 0%, black 78%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(circle at 50% 52%, black 0%, black 78%, transparent 100%)',
       }}
