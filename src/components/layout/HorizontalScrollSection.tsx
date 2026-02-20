@@ -81,6 +81,7 @@ export function HorizontalScrollSection({
         x: getScrollAmount,
         ease: 'none',
         scrollTrigger: {
+          id: 'horizontal-sections',
           trigger: containerRef.current,
           start: 'top top',
           end: () => `+=${Math.abs(getScrollAmount())}`,

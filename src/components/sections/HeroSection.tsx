@@ -3,6 +3,10 @@ import { HeroParticles } from '@/components/three/HeroParticles';
 import { scrollToSection } from '@/utils/scrollToSection';
 
 export function HeroSection() {
+  const scrollToConsultoria = () => {
+    scrollToSection('consultoria');
+  };
+
   const scrollToManifiesto = () => {
     scrollToSection('manifiesto');
   };
@@ -51,6 +55,7 @@ export function HeroSection() {
               <div className="hero-btn mt-4 md:mt-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 opacity-0 w-full">
                 <button
                   type="button"
+                  onClick={scrollToConsultoria}
                   className="group relative px-6 md:px-8 py-4 bg-gray-900 text-white overflow-hidden transition-all hover:bg-[#FF4D30] w-full sm:w-auto flex justify-start sm:justify-center"
                 >
                   <div className="relative z-10 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]">
