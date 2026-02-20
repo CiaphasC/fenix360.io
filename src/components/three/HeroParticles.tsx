@@ -307,5 +307,5 @@ export function HeroParticles() {
     };
   }, []);
 
-  return <div ref={mountRef} className="absolute inset-0 z-0 opacity-70 pointer-events-none mix-blend-screen" />;
+  return <div ref={mountRef} className="hero-bg-parallax absolute inset-0 z-0 opacity-70 pointer-events-none mix-blend-screen" />;
 }

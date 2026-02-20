@@ -12,10 +12,10 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen min-h-[600px] w-full flex items-center overflow-hidden">
+    <section className="hero-scroll-section relative h-screen min-h-[600px] w-full flex items-center overflow-hidden">
       <HeroParticles />
 
-      <div className="max-w-[1400px] mx-auto px-6 w-full relative z-10">
+      <div className="hero-content-parallax max-w-[1400px] mx-auto px-6 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-8 relative z-10 mt-16 md:mt-0">
             <div className="flex flex-col justify-center items-start">

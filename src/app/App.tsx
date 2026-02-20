@@ -12,6 +12,7 @@ import { RisingEmbersBackground } from '@/components/three/RisingEmbersBackgroun
 import { useCurtainIntroAnimation } from '@/hooks/useCurtainIntroAnimation';
 import { useGsapSetup } from '@/hooks/useGsapSetup';
 import { useHeroIntroAnimation } from '@/hooks/useHeroIntroAnimation';
+import { useHeroScrollParallax } from '@/hooks/useHeroScrollParallax';
 import { useScrollLock } from '@/hooks/useScrollLock';
 import { useScrollThreshold } from '@/hooks/useScrollThreshold';
 import { scrollToSection } from '@/utils/scrollToSection';
@@ -44,6 +45,12 @@ export function App() {
   });
 
   useHeroIntroAnimation({
+    isGsapReady: gsapReady,
+    enabled: !isIntroActive,
+    rootRef,
+  });
+
+  useHeroScrollParallax({
     isGsapReady: gsapReady,
     enabled: !isIntroActive,
     rootRef,
